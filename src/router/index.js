@@ -7,7 +7,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/', // 访问根目录下时，路由到HelloWorld.vue文件
       name: 'HelloWorld',
       component: HelloWorld
     }

@@ -10,6 +10,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: { App }, // ES6写法相当于components:{App:App}
   template: '<App/>'
 })
+// 路由就是根据网址的不同返回不同的内容给用户
