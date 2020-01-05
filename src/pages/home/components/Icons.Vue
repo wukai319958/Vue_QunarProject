@@ -1,9 +1,9 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
-        <div class="icon" v-for="item of page">
-          <div class="icon-img">
+        <div class="icon" v-for="item of page" :key="item.id">
+          <div class="icon-img" >
             <img class="icon-img-content" :src="item.iconUrl" alt="">
           </div>
             <p class="icon-desc">{{item.content}}</p>
@@ -62,7 +62,11 @@ export default {
         id: '0009',
         iconUrl: 'https://picbed.qunarzz.com/ae617a31e0bd5803d76918b817f6d942.png',
         content: '自由行自由行自由行自由行自由行'
-      }]
+      }],
+      swiperOption: {
+        loop: true,
+        autoplay: 3000
+      }
     }
   },
   computed: {
