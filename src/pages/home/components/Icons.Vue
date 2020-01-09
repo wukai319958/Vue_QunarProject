@@ -4,9 +4,9 @@
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img" >
-            <img class="icon-img-content" :src="item.iconUrl" alt="">
+            <img class="icon-img-content" :src="item.imgUrl" alt="">
           </div>
-            <p class="icon-desc">{{item.content}}</p>
+            <p class="icon-desc">{{item.desc}}</p>
           </div>
       </swiper-slide>
     </swiper>
@@ -16,55 +16,13 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      iconList: [{
-        id: '0001',
-        iconUrl: '//s.qunarzz.com/homenode/images/touchheader/hotel.png',
-        content: '酒店'
-      },
-      {
-        id: '0002',
-        iconUrl: '//s.qunarzz.com/homenode/images/touchheader/flight.png',
-        content: '机票'
-      },
-      {
-        id: '0003',
-        iconUrl: '//s.qunarzz.com/homenode/images/touchheader/train.png',
-        content: '火车票'
-      },
-      {
-        id: '0004',
-        iconUrl: '//s.qunarzz.com/homenode/images/touchheader/package.png',
-        content: '度假'
-      },
-      {
-        id: '0005',
-        iconUrl: 'https://picbed.qunarzz.com/f5e5770393d759578962e53ee67798c8.png',
-        content: '海外酒店'
-      },
-      {
-        id: '0006',
-        iconUrl: 'https://picbed.qunarzz.com/a36d2288f19e54562338f4d8ef986288.png',
-        content: '低价机票'
-      },
-      {
-        id: '0007',
-        iconUrl: 'https://picbed.qunarzz.com/377db8cb2143aebf01869c9baad3d325.png',
-        content: '汽车船票'
-      },
-      {
-        id: '0008',
-        iconUrl: 'https://picbed.qunarzz.com/ae617a31e0bd5803d76918b817f6d942.png',
-        content: '自由行'
-      },
-      {
-        id: '0009',
-        iconUrl: 'https://picbed.qunarzz.com/ae617a31e0bd5803d76918b817f6d942.png',
-        content: '自由行自由行自由行自由行自由行'
-      }],
       swiperOption: {
-        loop: true,
+        loop: false,
         autoplay: 13000
       }
     }
@@ -72,7 +30,7 @@ export default {
   computed: {
     pages () {
       const pages = []
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8) // 计算当前图标应该放在第几页
         if (!pages[page]) { // 如果当前数组项不存在
           pages[page] = []
