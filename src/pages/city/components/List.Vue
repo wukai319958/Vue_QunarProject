@@ -8,7 +8,7 @@
         <div class="button-list">
           <div class="button-wrapper">
             <div class="button">
-              余杭
+              {{this.$store.state.city}}
             </div>
           </div>
         </div>
@@ -18,7 +18,7 @@
           热门城市
         </div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item of hot" :key="item.id">
+          <div class="button-wrapper" v-for="item of hot" :key="item.id" @click="handleCityClick(item.name)">
             <div class="button">
               {{item.name}}
             </div>
@@ -30,7 +30,7 @@
           {{key}}
         </div>
         <div class="item-list">
-          <div class="item border-bottom"  v-for="city of item" :key="city.id">
+          <div class="item border-bottom"  v-for="city of item" :key="city.id" @click="handleCityClick(city.name)">
             {{city.name}}
           </div>
         </div>
@@ -42,14 +42,20 @@
 <script>
 import Bscroll from 'better-scroll'
 export default {
+  name: 'List',
   props: {
     hot: Array,
     cities: Object,
     letter: String
   },
-  name: 'List',
-  mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+  methods: {
+    handleCityClick (city) {
+      // 派发一个名为changeCity的Action，并且将city传入
+      // this.$store.dispatch('changeCity', city)
+      // 直接调用commit,绕过Action
+      this.$store.commit('changeCity', city)
+      this.$router.push('/')
+    }
   },
   watch: {
     letter () {
@@ -58,6 +64,9 @@ export default {
         this.scroll.scrollToElement(element)
       }
     }
+  },
+  mounted () {
+    this.scroll = new Bscroll(this.$refs.wrapper)
   }
 }
 </script>

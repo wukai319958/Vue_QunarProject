@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import fastClick from 'fastclick' // 引入fastclick
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import store from './store/index.js'
 import 'swiper/dist/css/swiper.css'
 import 'styles/iconfont.css'
 import 'styles/reset.css'
@@ -17,6 +18,7 @@ Vue.use(VueAwesomeSwiper /* {default global options} */)
 new Vue({
   el: '#app',
   router, // ES6写法相当于ruuter:router
+  store,
   components: { App }, // ES6写法相当于components:{App:App}
   template: '<App/>'
 })
