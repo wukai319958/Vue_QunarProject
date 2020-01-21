@@ -16,6 +16,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 export default {
   name: 'CitySearch',
   props: {
@@ -26,8 +27,11 @@ export default {
       // 派发一个名为changeCity的Action，并且将city传入
       // this.$store.dispatch('changeCity', city)
       // 直接调用commit,绕过Action
-      this.$store.commit('changeCity', city)
-    }
+      // this.$store.commit('changeCity', city)
+      this.$router.push('./')
+      this.changeCity(city)
+    },
+    ...mapMutations(['changeCity'])
   },
   data () {
     return {
@@ -69,6 +73,7 @@ export default {
   }
 }
 </script>
+import { mapMutations } from 'vuex'
 
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
