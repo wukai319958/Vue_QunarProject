@@ -21,5 +21,8 @@ export default new Router({
     path: '/detail/:id', // 访问根目录下时，路由到Home.vue文件
     name: 'Deatail',
     component: Detail
-  }]
+  }],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
